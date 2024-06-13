@@ -1,0 +1,22 @@
+name: ShellCheck
+
+on:
+  push:
+    branches:
+      - main  # 你可以将这里改为你需要的分支
+  pull_request:
+    branches:
+      - main  # 你可以将这里改为你需要的分支
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # 检出最新的代码
+
+    - name: Run ShellCheck
+      uses: ludeeus/action-shellcheck@v1.1.0  # 使用 ShellCheck Action
+      with:
+        path: '**/*.sh'  # 检查所有扩展名为 .sh 的文件
